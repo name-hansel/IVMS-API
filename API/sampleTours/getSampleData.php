@@ -14,7 +14,7 @@
     $num= $result->rowcount();
 
     if ($num > 0){
-        $post_arr = arr();
+        $post_arr = array();
         $posts_arr['data']= array();
 
         while($row = $result-> fetch(PDO::FETCH_ASSOC)){
@@ -41,6 +41,3 @@
             array('message '=> 'No tours found')
         );
     }
-
-    
-?>

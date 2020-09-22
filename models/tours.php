@@ -19,10 +19,9 @@
     
     function getSampleData(){
         $query = 'SELECT * FROM tour';
-        $stmt= $this-> conn-> prepare($query);
+        $stmt= $this->conn->prepare($query);
         $stmt-> bindprogram(1, $this-> tour_id);
         $stmt-> execute(); 
         return $stmt;
     }
 }
-?>
