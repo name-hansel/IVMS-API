@@ -3,7 +3,7 @@
     header('Content-Type: application/json');
 
     include_once '../../config/database.php';
-    include_once '../../models/Post.php';
+    include_once '../../models/tours.php';
 
     $database= new Database();
     $db= $database-> connect();
