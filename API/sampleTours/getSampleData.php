@@ -10,7 +10,7 @@
 
     $post = new tour($db);
 
-    $result=$post->getSampleData();
+    $result=$post-> getSampleData();
     $num= $result->rowcount();
 
     if ($num > 0){
@@ -31,7 +31,7 @@
                     'description' => $description,
                     'avg_rating' => $avg_rating
             );
-
+           
             array_push($post_arr['data'], $post_item );
         }
         echo json_encode($posts_arr);

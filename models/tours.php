@@ -11,7 +11,7 @@
         public $rate;
         public $description;
         public $avg_rating;
-    }
+    
 
     function __contruct($db){
         $this->conn =$db;
@@ -24,4 +24,5 @@
         $stmt-> execute(); 
         return $stmt;
     }
+}
 ?>
