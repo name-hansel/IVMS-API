@@ -25,8 +25,11 @@ $num = $result->rowCount();
 $num2 = $result2->rowCount();
 
 $tours_arr = array();
+$tours_arr['bookedtourdata'] = array();
+$tours_arr['tourdata'] = array();
+
+
 if ($num > 0) {
-    $tours_arr['tourdata'] = array();
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
         $tour_item = array(
@@ -39,14 +42,11 @@ if ($num > 0) {
         array_push($tours_arr['tourdata'], $tour_item);
     }
 } else {
-    //no tours 
-    echo json_encode(
-        array('message' => 'No tours found')
-    );
+    $message = array('message' => 'No tours found');
+    array_push($tours_arr['tourdata'], $message);
 }
 
 if ($num2 > 0) {
-    $tours_arr['bookedtourdata'] = array();
     while ($row = $result2->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
         $btour_item = array(
@@ -59,10 +59,8 @@ if ($num2 > 0) {
         array_push($tours_arr['bookedtourdata'], $btour_item);
     }
 } else {
-    //no tours 
-    echo json_encode(
-        array('message' => 'No booked tours found')
-    );
+    $message = array('message' => 'No booked tours found');
+    array_push($tours_arr['bookedtourdata'], $message);
 }
 
 echo json_encode($tours_arr);

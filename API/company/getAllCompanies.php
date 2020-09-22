@@ -14,9 +14,9 @@ $company = new Company($db);
 $result = $company->getAllCompanies();
 $num = $result->rowCount();
 
+$company_arr = array();
+$company_arr['companyData'] = array();
 if ($num > 0) {
-    $company_arr = array();
-    $company_arr['companyData'] = array();
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
         $company_item = array(
@@ -26,13 +26,11 @@ if ($num > 0) {
             'company' => $company,
             'description' => $description
         );
-        echo ($company_item);
         array_push($company_arr['companyData'], $company_item);
     }
-    echo json_encode($company_arr);
+    echo json_encode($company_arr['companyData']);
 } else {
     //no company 
-    echo json_encode(
-        array('message' => 'No company found')
-    );
+    $message = array('message' => 'No tours found');
+    array_push($company_arr['companyData'], $message);
 }

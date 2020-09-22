@@ -18,10 +18,9 @@ class Company
 
     public function getAllCompanies()
     {
-        $query = 'SELECT (company_id, email, phone_number, company, description) FROM company';
+        $query = 'SELECT company_id, email, phone_number, company, description FROM company';
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-
         return $stmt;
     }
 }
