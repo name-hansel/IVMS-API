@@ -1,5 +1,5 @@
 <?php
-class Companies
+class Company
 {
     private $conn;
     private $table = 'company';
@@ -18,9 +18,8 @@ class Companies
 
     public function getAllCompanies()
     {
-        $query = 'SELECT * FROM company'; 
+        $query = 'SELECT (company_id, email, phone_number, company, description) FROM company';
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $this->company_id);
         $stmt->execute();
 
         return $stmt;

@@ -11,26 +11,25 @@ $db = $database->connect();
 
 $company = new Company($db);
 
-$result = $company->getAllComapnies();
-
+$result = $company->getAllCompanies();
 $num = $result->rowCount();
 
 if ($num > 0) {
-    $comp_arr['compdata'] = array();
+    $company_arr = array();
+    $company_arr['companyData'] = array();
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
-        $comp_item = array(
+        $company_item = array(
             'company_id' => $company_id,
             'email' => $email,
-            'password' => $password,
             'phone_number' => $phone_number,
             'company' => $company,
             'description' => $description
         );
-        array_push($comp_arr['compdata'], $comp_item);
+        echo ($company_item);
+        array_push($company_arr['companyData'], $company_item);
     }
-    echo json_encode($comp_arr);
-    
+    echo json_encode($company_arr);
 } else {
     //no company 
     echo json_encode(
