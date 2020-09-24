@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
-include_once '../../config/database.php';
+include_once '../../config/getFromTour.php';
 include_once '../../models/STour.php';
 
 $database = new Database();
