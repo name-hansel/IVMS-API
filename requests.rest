@@ -18,3 +18,6 @@ Content-Type: application/json
     "rate": 1000,
     "description": "akdajsdasd"
 }
+
+###
+GET http://localhost/IVMS-API/API/company/getHomeData.php

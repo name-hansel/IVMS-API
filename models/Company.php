@@ -23,4 +23,12 @@ class Company
         $stmt->execute();
         return $stmt;
     }
+
+    public function getHomeData()
+    {
+        $query = 'SELECT company,description FROM company';
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
 }
