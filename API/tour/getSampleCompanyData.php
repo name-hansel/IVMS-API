@@ -50,7 +50,7 @@ if ($bookedTourNum > 0) {
     while ($row = $bookedTourResult->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
         $bTour_item = array(
-            'bTour_id' => $bTour_id,
+            'btour_id' => $btour_id,
             'tour_id' => $tour_id,
             'user_id' => $user_id,
             'college' => $college,

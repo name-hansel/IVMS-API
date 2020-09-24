@@ -15,14 +15,18 @@ class BookedTour
         $this->conn = $db;
     }
 
-    //SELECT btour_id, btour.user_id, college, date FROM btour INNER JOIN coordinator ON btour.user_id = coordinator.user_id;
+
     public function getSampleCompanyBookedTourData()
     {
-        $query = 'SELECT btour_id, btour.tour_id, btour.user_id, coordinator.college, date 
-            FROM btour INNER JOIN tour 
-            ON tour.tour_id = btour.tour_id INNER JOIN coordinator
-            ON coordinator.user_id = btour.user_id
-            WHERE tour.company_id = ?';
+        //FIX query problem -> duplicates each btour
+        $query = 'SELECT btour_id, btour.tour_id, btour.user_id,        coordinator.college, date 
+        FROM btour INNER JOIN tour 
+        ON tour.tour_id = btour.tour_id 
+        INNER JOIN coordinator
+        ON coordinator.user_id = btour.user_id
+        WHERE (tour.company_id = ? AND btour.date > CURRENT_DATE) 
+        LIMIT 4';
+
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->company_id);
         $stmt->execute();

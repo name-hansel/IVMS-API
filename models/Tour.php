@@ -50,6 +50,7 @@ class Tour
         $stmt->execute();
         return $stmt;
     }
+
     function getFromTour()
     {
         $query = 'SELECT * FROM tour';

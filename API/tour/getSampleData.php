@@ -2,13 +2,13 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
-include_once '../../config/getFromTour.php';
-include_once '../../models/STour.php';
+include_once '../../config/Database.php';
+include_once '../../models/Tour.php';
 
 $database = new Database();
 $db = $database->connect();
 
-$post = new STour($db);
+$post = new Tour($db);
 
 $result = $post->getFromTour();
 $num = $result->rowcount();
