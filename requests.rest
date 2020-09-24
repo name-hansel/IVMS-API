@@ -1,4 +1,4 @@
-GET http://localhost/IVMS-API/API/tour/getSampleData.php
+GET http://localhost/IVMS-API/API/tour/getSampleCompanyData.php
 ###
 GET http://localhost/IVMS-API/API/SampleTours/getSampleData.php
 ###

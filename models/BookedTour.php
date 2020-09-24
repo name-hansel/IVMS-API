@@ -16,7 +16,7 @@ class BookedTour
     }
 
     //SELECT btour_id, btour.user_id, college, date FROM btour INNER JOIN coordinator ON btour.user_id = coordinator.user_id;
-    public function getSampleBookedTourData()
+    public function getSampleCompanyBookedTourData()
     {
         $query = 'SELECT btour_id, btour.tour_id, btour.user_id, coordinator.college, date 
             FROM btour INNER JOIN tour 

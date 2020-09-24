@@ -11,26 +11,26 @@ $database = new Database();
 $db = $database->connect();
 
 $tour = new Tour($db);
-$btour = new BookedTour($db);
+$bTour = new BookedTour($db);
 //set company_id
 // $tour->company_id = isset($_GET['company_id']) ? $_GET['company_id'] : die;
 
 $tour->company_id = 1;
-$btour->company_id = 1;
+$bTour->company_id = 1;
 
-$result = $tour->getSampleTourData();
-$result2 = $btour->getSampleBookedTourData();
+$tourResult = $tour->getSampleCompanyTourData();
+$bookedTourResult = $bTour->getSampleCompanyBookedTourData();
 
-$num = $result->rowCount();
-$num2 = $result2->rowCount();
+$tourNum = $tourResult->rowCount();
+$bookedTourNum = $bookedTourResult->rowCount();
 
-$tours_arr = array();
-$tours_arr['bookedtourdata'] = array();
-$tours_arr['tourdata'] = array();
+$tourArray = array();
+$tourArray['bookedTourData'] = array();
+$tourArray['tourData'] = array();
 
 
-if ($num > 0) {
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+if ($tourNum > 0) {
+    while ($row = $tourResult->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
         $tour_item = array(
             'tour_id' => $tour_id,
@@ -39,28 +39,28 @@ if ($num > 0) {
             'place' => $place,
             'rate' => $rate
         );
-        array_push($tours_arr['tourdata'], $tour_item);
+        array_push($tourArray['tourData'], $tour_item);
     }
 } else {
     $message = array('message' => 'No tours found');
-    array_push($tours_arr['tourdata'], $message);
+    array_push($tourArray['tourData'], $message);
 }
 
-if ($num2 > 0) {
-    while ($row = $result2->fetch(PDO::FETCH_ASSOC)) {
+if ($bookedTourNum > 0) {
+    while ($row = $bookedTourResult->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
-        $btour_item = array(
-            'btour_id' => $btour_id,
+        $bTour_item = array(
+            'bTour_id' => $bTour_id,
             'tour_id' => $tour_id,
             'user_id' => $user_id,
             'college' => $college,
             'date' => $date
         );
-        array_push($tours_arr['bookedtourdata'], $btour_item);
+        array_push($tourArray['bookedTourData'], $bTour_item);
     }
 } else {
     $message = array('message' => 'No booked tours found');
-    array_push($tours_arr['bookedtourdata'], $message);
+    array_push($tourArray['bookedTourData'], $message);
 }
 
-echo json_encode($tours_arr);
+echo json_encode($tourArray);

@@ -21,7 +21,7 @@ class Tour
         $this->conn = $db;
     }
 
-    public function getSampleTourData()
+    public function getSampleCompanyTourData()
     {
         $query = 'SELECT tour_id, name, branch, place, rate FROM ' . $this->table . ' WHERE company_id = ? LIMIT 4';
         $stmt = $this->conn->prepare($query);
