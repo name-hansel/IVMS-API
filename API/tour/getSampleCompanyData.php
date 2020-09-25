@@ -25,8 +25,9 @@ $tourNum = $tourResult->rowCount();
 $bookedTourNum = $bookedTourResult->rowCount();
 
 $tourArray = array();
-$tourArray['bookedTourData'] = array();
-$tourArray['tourData'] = array();
+$tourArray['data'] = array();
+$tourArray['data']['bookedTourData'] = array();
+$tourArray['data']['tourData'] = array();
 
 
 if ($tourNum > 0) {
@@ -39,11 +40,11 @@ if ($tourNum > 0) {
             'place' => $place,
             'rate' => $rate
         );
-        array_push($tourArray['tourData'], $tour_item);
+        array_push($tourArray['data']['tourData'], $tour_item);
     }
 } else {
     $message = array('message' => 'No tours found');
-    array_push($tourArray['tourData'], $message);
+    array_push($tourArray['data']['tourData'], $message);
 }
 
 if ($bookedTourNum > 0) {
@@ -56,11 +57,11 @@ if ($bookedTourNum > 0) {
             'college' => $college,
             'date' => $date
         );
-        array_push($tourArray['bookedTourData'], $bTour_item);
+        array_push($tourArray['data']['bookedTourData'], $bTour_item);
     }
 } else {
     $message = array('message' => 'No booked tours found');
-    array_push($tourArray['bookedTourData'], $message);
+    array_push($tourArray['data']['bookedTourData'], $message);
 }
 
 echo json_encode($tourArray);

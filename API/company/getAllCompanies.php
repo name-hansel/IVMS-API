@@ -15,7 +15,7 @@ $result = $company->getAllCompanies();
 $num = $result->rowCount();
 
 $company_arr = array();
-$company_arr['companyData'] = array();
+$company_arr['data'] = array();
 if ($num > 0) {
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
@@ -26,12 +26,12 @@ if ($num > 0) {
             'company' => $company,
             'description' => $description
         );
-        array_push($company_arr['companyData'], $company_item);
+        array_push($company_arr['data'], $company_item);
     }
-    echo json_encode($company_arr['companyData']);
+    echo json_encode($company_arr);
 } else {
     //no company 
     $message = array('message' => 'No companies found');
-    array_push($company_arr['companyData'], $message);
-    echo json_encode($company_arr['companyData']);
+    array_push($company_arr['data'], $message);
+    echo json_encode($company_arr['data']);
 }
