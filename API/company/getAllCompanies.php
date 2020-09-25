@@ -31,6 +31,7 @@ if ($num > 0) {
     echo json_encode($company_arr['companyData']);
 } else {
     //no company 
-    $message = array('message' => 'No tours found');
+    $message = array('message' => 'No companies found');
     array_push($company_arr['companyData'], $message);
+    echo json_encode($company_arr['companyData']);
 }
