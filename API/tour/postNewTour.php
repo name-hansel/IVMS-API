@@ -21,7 +21,6 @@ $tour->company_id = $data->company_id;
 $tour->available_days = $data->available_days;
 $tour->place = $data->place;
 $tour->number_people = $data->number_people;
-$tour->number_days = $data->number_days;
 $tour->rate = $data->rate;
 $tour->description = $data->description;
 

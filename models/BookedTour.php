@@ -19,7 +19,7 @@ class BookedTour
     public function getSampleCompanyBookedTourData()
     {
         //FIX query problem -> duplicates each btour
-        $query = 'SELECT btour_id, btour.tour_id, btour.user_id,        coordinator.college, date 
+        $query = 'SELECT btour_id, btour.tour_id, btour.user_id,        tour.name, coordinator.college, date 
         FROM btour INNER JOIN tour 
         ON tour.tour_id = btour.tour_id 
         INNER JOIN coordinator

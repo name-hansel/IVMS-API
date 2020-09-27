@@ -11,12 +11,11 @@ Content-Type: application/json
     "name": "ABC Tour",
     "branch": "IT",
     "company_id": 1,
-    "available_days": "17-09-2020",
+    "available_days": "02-10-2020",
     "place": "Mumbai",
     "number_people": 10,
-    "number_days": 31,
     "rate": 1000,
-    "description": "akdajsdasd"
+    "description": "via API"
 }
 
 ###

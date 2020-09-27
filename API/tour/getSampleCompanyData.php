@@ -54,6 +54,7 @@ if ($bookedTourNum > 0) {
             'btour_id' => $btour_id,
             'tour_id' => $tour_id,
             'user_id' => $user_id,
+            'name' => $name,
             'college' => $college,
             'date' => $date
         );
