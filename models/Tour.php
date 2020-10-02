@@ -32,14 +32,13 @@ class Tour
 
     public function postNewTour()
     {
-        $d = "15-09-2020";
         $query = "INSERT INTO tour(name, branch, company_id, available_days, place, number_people, rate, description) VALUES (?,?,?,?,?,?,?,?)";
         $stmt = $this->conn->prepare($query);
 
         $stmt->bindParam(1, $this->name);
         $stmt->bindParam(2, $this->branch);
         $stmt->bindParam(3, $this->company_id);
-        $stmt->bindParam(4, $d);
+        $stmt->bindParam(4, $this->available_days);
         $stmt->bindParam(5, $this->place);
         $stmt->bindParam(6, $this->number_people);
         $stmt->bindParam(7, $this->rate);
