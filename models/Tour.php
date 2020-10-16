@@ -63,4 +63,14 @@ class Tour
         $stmt->execute();
         return $stmt;
     }
+
+    public function getCompanyTours()
+    {
+        $query = 'SELECT tour_id, name, branch, available_days, place, number_people, rate, description, avg_rating  FROM ' . $this->table . ' WHERE company_id = ?';
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->company_id);
+        $stmt->execute();
+
+        return $stmt;
+    }
 }

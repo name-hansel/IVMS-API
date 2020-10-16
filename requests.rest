@@ -1,5 +1,7 @@
 GET http://localhost/IVMS-API/API/tour/getSampleCompanyData.php
 ###
+GET http://localhost/IVMS-API/API/tour/getCompanyTours.php
+###
 GET http://localhost/IVMS-API/API/tour/getSampleData.php
 ###
 GET http://localhost/IVMS-API/API/company/getAllCompanies.php
