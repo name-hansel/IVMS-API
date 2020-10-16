@@ -7,8 +7,9 @@ class BookedTour
     public $btour_id;
     public $tour_id;
     public $user_id;
-    public $college;
+    public $number_people;
     public $date;
+    public $rating;
 
     public function __construct($db)
     {
@@ -31,6 +32,16 @@ class BookedTour
         $stmt->bindParam(1, $this->company_id);
         $stmt->execute();
 
+        return $stmt;
+    }
+
+    public function getPastTours()
+    {   
+        //current_date>btour.date
+        //tour name,company name,coordinator name,date,avg_rating
+        $query = 'SELECT btour_id, tour_id, user_id, date FROM btour WHERE btour_id < 10006';
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
         return $stmt;
     }
 }
