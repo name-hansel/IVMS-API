@@ -56,7 +56,7 @@ if ($bookedTourNum > 0) {
             'user_id' => $user_id,
             'name' => $name,
             'college' => $college,
-            'date' => $date
+            'available_days' => $available_days
         );
         array_push($tourArray['data']['bookedTourData'], $bTour_item);
     }
