@@ -73,4 +73,12 @@ class Tour
 
         return $stmt;
     }
+
+    public function getHomeTour()
+    {
+        $query = 'SELECT name,description FROM tour';
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
 }

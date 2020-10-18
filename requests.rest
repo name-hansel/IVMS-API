@@ -21,4 +21,8 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost/IVMS-API/API/company/getHomeData.php
+
+GET http://localhost/IVMS-API/API/company/getHomeCompany.php
+
+###
+GET http://localhost/IVMS-API/API/tour/getHomeTour.php
