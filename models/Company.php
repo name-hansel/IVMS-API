@@ -24,9 +24,9 @@ class Company
         return $stmt;
     }
 
-    public function getHomeData()
+    public function getHomeCompanyData()
     {
-        $query = 'SELECT company,description FROM company';
+        $query = 'SELECT company, description FROM company';
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
