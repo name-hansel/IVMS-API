@@ -1,5 +1,6 @@
 <?php
 //Headers
+// TODO change variable casing, get tour name, company name, date (from tour table)
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
@@ -11,7 +12,7 @@ $db = $database->connect();
 
 $btour = new BookedTour($db);
 
-$result = $btour->getPastTours();
+$result = $btour->getPastCoordinatorTours();
 $num = $result->rowCount();
 
 $btour_arr = array();

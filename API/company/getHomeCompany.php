@@ -9,41 +9,29 @@
     //Instantiate DB and connect
     $database= new Database();
     $db= $database->connect();
+    $company = new Company($db);
 
-    //Instantiate post query
-    $post = new Company($db);
-
-    //post query
-    $result=$post->getHomeData();
-    //Get row count
+    
+    $result = $company->getHomeData();
     $num = $result->rowCount();
 
-    //check if any posts
     if($num> 0) {
-        //Post array
-        $posts_arr = array();
-        $posts_arr['data']= array();
+        $companyArray = array();
+        $companyArray['data']= array();
 
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
-            
-
-            $post_item = array(
+            $companyItem = array(
                 'company' => $company,
                 'description' => $description
             );
-
-            //Push to "data"
-            array_push($posts_arr['data'], $post_item);
+            array_push($companyArray['data'], $companyItem);
         }
-
-        //Turn to json and output
-        echo json_encode($posts_arr);
+        echo json_encode($companyArray);
 
     } else {
-        //No Posts
         echo json_encode(
-            array('message' => 'No Posts Found')
+            array('message' => 'No Companies Found')
         );
 
     }

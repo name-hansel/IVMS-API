@@ -14,12 +14,13 @@ $tour = new Tour($db);
 $result = $tour->getAllTours();
 $num = $result->rowCount();
 
-$tour_arr = array();
-$tour_arr['tourData'] = array();
+$tourArray = array();
+$tourArray['tourData'] = array();
+
 if ($num > 0) {
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
-        $tour_item = array(
+        $tourItem = array(
             'name' => $name,
             'branch' => $branch,
             'company_id' => $company_id,
@@ -27,11 +28,11 @@ if ($num > 0) {
             'description' => $description,
             'avg_rating' => $avg_rating
         );
-        array_push($tour_arr['tourData'], $tour_item);
+        array_push($tourArray['tourData'], $tourItem);
     }
-    echo json_encode($tour_arr['tourData']);
+    echo json_encode($tourArray['tourData']);
 } else {
     //no tour 
     $message = array('message' => 'No tours found');
-    array_push($tour_arr['tourData'], $message);
+    array_push($tourArray['tourData'], $message);
 }

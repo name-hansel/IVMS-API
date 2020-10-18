@@ -33,21 +33,18 @@ class BookedTour
         return $stmt;
     }
 
-    public function getPastTours()
+    public function getPastCoordinatorTours()
     {
-        //current_date>btour.date
-        //tour name,company name,coordinator name,date,avg_rating
+        // TODO fix query to match updated columns, get tour name, company name, and date (from tour table)
         $query = 'SELECT btour_id, tour_id, user_id, date FROM btour WHERE btour_id < 10006';
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
     }
 
-
-
     public function getCompanyBookedTours()
     {
-        $query = 'SELECT btour_id, btour.tour_id, btour.user_id, tour.name, coordinator.college, tour.available_days, booked_at, number_people FROM btour INNER JOIN tour 
+        $query = 'SELECT btour_id, btour.tour_id, btour.user_id, tour.name, coordinator.college, tour.available_days, btour.booked_at, btour.number_people FROM btour INNER JOIN tour 
         ON tour.tour_id = btour.tour_id 
         INNER JOIN coordinator
         ON coordinator.user_id = btour.user_id
