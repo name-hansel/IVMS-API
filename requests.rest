@@ -10,14 +10,14 @@ POST http://localhost/IVMS-API/API/tour/postNewTour.php
 Content-Type: application/json
 
 {
-    "name": "ABC Tour",
-    "branch": "IT",
+    "name": "FF Tour",
+    "branch": "Mechanical",
     "company_id": 1,
-    "available_days": "02-10-2020",
-    "place": "Mumbai",
-    "number_people": 10,
-    "rate": 1000,
-    "description": "via API"
+    "available_days": "06-11-2020",
+    "place": "Delhi",
+    "number_people": 5,
+    "rate": 100000,
+    "description": "Tour."
 }
 
 ###
@@ -26,3 +26,18 @@ GET http://localhost/IVMS-API/API/company/getHomeCompany.php
 
 ###
 GET http://localhost/IVMS-API/API/tour/getHomeTour.php
+
+###
+PUT http://localhost/IVMS-API/API/tour/putEditTour.php
+Content-Type: application/json
+
+{
+    "name": "Edited Tour Name",
+    "branch": "Comps",
+    "available_days": "12-11-2020",
+    "place": "Kharghar",
+    "number_people": 20,
+    "rate": 50000,
+    "description": "This tour has been edited.",
+    "tour_id": 15
+}

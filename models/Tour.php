@@ -14,6 +14,8 @@ class Tour
     public $rate;
     public $description;
     public $avg_rating;
+    public $created_at;
+    public $edited_at;
 
     public function __construct($db)
     {
@@ -66,7 +68,7 @@ class Tour
 
     public function getCompanyTours()
     {
-        $query = 'SELECT tour_id, name, branch, available_days, place, number_people, rate, description, avg_rating  FROM ' . $this->table . ' WHERE company_id = ?';
+        $query = 'SELECT tour_id, name, branch, available_days, place, number_people, rate, description, avg_rating, created_at, edited_at  FROM ' . $this->table . ' WHERE company_id = ?';
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->company_id);
         $stmt->execute();
@@ -78,6 +80,25 @@ class Tour
     {
         $query = 'SELECT name,description FROM tour';
         $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
+
+    public function putEditTour() {
+        // name, branch, available_days, place, number_people, rate, description, edited_at
+        $query = 'UPDATE tour SET
+        name = ?, branch = ?, available_days = ?, place = ?, number_people = ?, rate = ?, description = ?, edited_at = NOW()
+        WHERE tour_id = ?';
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->name);
+        $stmt->bindParam(2, $this->branch);
+        $stmt->bindParam(3, $this->available_days);
+        $stmt->bindParam(4, $this->place);
+        $stmt->bindParam(5, $this->number_people);
+        $stmt->bindParam(6, $this->rate);
+        $stmt->bindParam(7, $this->description);
+        $stmt->bindParam(8, $this->tour_id);
+
         $stmt->execute();
         return $stmt;
     }

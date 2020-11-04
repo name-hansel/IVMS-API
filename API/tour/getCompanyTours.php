@@ -29,7 +29,9 @@ if ($tourNum > 0) {
             'number_people' => $number_people,
             'rate' => $rate,
             'description' => $description,
-            'avg_rating' => $avg_rating
+            'avg_rating' => $avg_rating,
+            'created_at' => $created_at,
+            'edited_at' => $edited_at
         );
         array_push($tourArray['data'], $tour_item);
     }
