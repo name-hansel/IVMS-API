@@ -6,29 +6,26 @@ header('Access-Control-Allow-Methods: PUT');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
 include_once '../../config/Database.php';
-include_once '../../models/Tour.php';
+include_once '../../models/Company.php';
 $database = new Database();
 $db = $database->connect();
 
-$tour = new Tour($db);
+$company = new Company($db);
 //decode posted data
 $data = json_decode(file_get_contents("php://input"));
 
-$tour->tour_id = $data->tour_id;
-$tour->name = $data->name;
-$tour->branch = $data->branch;
-$tour->available_days = $data->available_days;
-$tour->place = $data->place;
-$tour->number_people = $data->number_people;
-$tour->rate = $data->rate;
-$tour->description = $data->description;
+$company->email = $data->email;
+$company->phone_number = $data->phone_number;
+$company->company = $data->company;
+$company->description = $data->description;
+$company->company_id = $data->company_id;
 
-if ($tour->putEditTour()) {
+if ($company->putCompanyDetails()) {
     echo json_encode(
-        array('message' => 'Tour edited')
+        array('message' => 'Company details edited')
     );
 } else {
     echo json_encode(
-        array('message' => 'Tour not edited')
+        array('message' => 'Company details not edited')
     );
 }

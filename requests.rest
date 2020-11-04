@@ -41,3 +41,15 @@ Content-Type: application/json
     "description": "This tour has been edited.",
     "tour_id": 15
 }
+
+###
+PUT http://localhost/IVMS-API/API/company/putCompanyDetails.php
+Content-Type: application/json
+
+{
+    "company_id": 2,
+    "phone_number": 9876543210,
+    "company": "Edited Company",
+    "description": "This description has been edited.",
+    "email": "edited@api.com"
+}

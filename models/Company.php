@@ -31,4 +31,22 @@ class Company
         $stmt->execute();
         return $stmt;
     }
+
+    public function putCompanyDetails()
+    {
+        // email, phone number, company name, description
+        $query = 'UPDATE company SET
+        email = ?, phone_number = ?, company = ?, description = ?
+        WHERE company_id = ?';
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(1, $this->email);
+        $stmt->bindParam(2, $this->phone_number);
+        $stmt->bindParam(3, $this->company);
+        $stmt->bindParam(4, $this->description);
+        $stmt->bindParam(5, $this->company_id);
+
+        $stmt->execute();
+        return $stmt;
+    }
 }
