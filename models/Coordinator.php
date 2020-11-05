@@ -33,8 +33,8 @@ class Coordinator
     {
         $query = 'SELECT password FROM coordinator
         WHERE email = ?';
-        $stmt = $this->conn->prepare($query);
 
+        $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->email);
 
         $stmt->execute();

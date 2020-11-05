@@ -34,8 +34,12 @@ class Company
 
     public function getHashCompany()
     {
-        $query = 'SELECT email, password FROM company';
+        $query = 'SELECT password FROM company
+        WHERE email = ?';
+
         $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->email);
+
         $stmt->execute();
         return $stmt;
     }

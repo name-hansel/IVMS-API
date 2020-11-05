@@ -2,8 +2,6 @@
 // Headers
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
-header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
 include_once '../../config/Database.php';
 include_once '../../models/Company.php';
@@ -14,8 +12,7 @@ $db = $database->connect();
 
 $company = new Company($db);
 // get email address of the user trying to login
-$data = json_decode(file_get_contents("php://input"));
-$company->email = $data->email;
+$company->email = $_GET['email'];
 
 $companyResult = $company->getHashCompany();
 $companyNum = $companyResult->rowCount();

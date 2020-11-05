@@ -54,7 +54,7 @@ Content-Type: application/json
 
 ### 
 
-POST http://localhost/IVMS-API/API/company/getHashCompany.php
+GET http://localhost/IVMS-API/API/company/getHashCompany.php?email=abc@def.com
 
 ###
 
