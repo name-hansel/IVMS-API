@@ -1,10 +1,9 @@
-GET http://localhost/IVMS-API/API/tour/getSampleCompanyData.php
+GET http://localhost/IVMS-API/API/tour/getSampleCompanyData.php?company_id=1
 ###
-GET http://localhost/IVMS-API/API/tour/getCompanyTours.php
+GET http://localhost/IVMS-API/API/tour/getCompanyTours.php?company_id=1
 ###
 GET http://localhost/IVMS-API/API/tour/getSampleData.php
-###
-GET http://localhost/IVMS-API/API/company/getAllCompanies.php
+
 ###
 POST http://localhost/IVMS-API/API/tour/postNewTour.php
 Content-Type: application/json
@@ -59,17 +58,4 @@ POST http://localhost/IVMS-API/API/company/getHashCompany.php
 
 ###
 
-POST http://localhost/IVMS-API/API/coordinator/getHashCoordinator.php
-Content-Type: application/json
-
-{
-    "email": "abc@def.com"
-}
-
-###
-POST http://localhost/IVMS-API/API/company/getHashCompany.php
-Content-Type: application/json
-
-{
-    "email": "vgty@gmail.com"
-}
+GET http://localhost/IVMS-API/API/coordinator/getHashCoordinator.php?email=abc@def.com

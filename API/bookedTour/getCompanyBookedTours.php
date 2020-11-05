@@ -6,11 +6,13 @@ header('Content-Type: application/json');
 include_once '../../config/Database.php';
 include_once '../../models/BookedTour.php';
 
+print_r($_GET);
+
 $database = new Database();
 $db = $database->connect();
 
 $bookedTour = new BookedTour($db);
-$bookedTour->company_id = 1;
+$bookedTour->company_id = $_GET['company_id'];
 
 $bookedTourResult = $bookedTour->getCompanyBookedTours();
 $bookedTourNum = $bookedTourResult->rowCount();
