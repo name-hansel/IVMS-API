@@ -1,0 +1,32 @@
+<?php
+class Coordinator
+{
+    private $conn;
+    private $table = 'coordinator';
+
+    public $user_id;
+    public $email;
+    public $password;
+    public $phone_number;
+    public $college;
+
+    public function __construct($db)
+    {
+        $this->conn = $db;
+    }
+
+    public function postUserCoordinator()
+    {
+        $query = "INSERT INTO coordinator(user_id, email, password, phone_number, college) VALUES (?,?,?,?,?)";
+        $stmt = $this->conn->prepare($query);
+
+       
+        $stmt->bindParam(2, $this->email);
+        $stmt->bindParam(3, $this->password);
+        $stmt->bindParam(4, $this->phone_number);
+        $stmt->bindParam(5, $this->college);
+
+        $stmt->execute();
+        return $stmt;
+    }
+}
