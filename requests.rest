@@ -33,21 +33,22 @@ POST http://localhost/IVMS-API/API/company/postUserCompany.php
 Content-Type: application/json
 
 {
-    "email": "pkn@gmail.com",
-    "password": 1234987,
-    "phone_number": 8765498031,
-    "company": "PKN",
+    
+    "email": "vgty@gmail.com",
+    "password": 1578,
+    "phone_number": 8765475631,
+    "company": "hhu",
     "description": "jhfghuguehjhfbwfj"
 }
 
 ###
 
-POST http://localhost/IVMS-API/API/coordinator/postUserCoordinator.php
+POST http://localhost/IVMS-API/API/coordinator/postUserCoordinator.php 
 Content-Type: application/json
 
 {
-    "email": "abc@def.com",
-    "password": "hashed",
-    "phone_number": "1234",
-    "college": "ABC College"
+"email": "abc@def.com", 
+"password": "hashed", 
+"phone_number": "1234", 
+"college": "ABC College"
 }
