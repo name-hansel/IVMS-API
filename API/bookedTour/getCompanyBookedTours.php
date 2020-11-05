@@ -6,8 +6,6 @@ header('Content-Type: application/json');
 include_once '../../config/Database.php';
 include_once '../../models/BookedTour.php';
 
-print_r($_GET);
-
 $database = new Database();
 $db = $database->connect();
 
