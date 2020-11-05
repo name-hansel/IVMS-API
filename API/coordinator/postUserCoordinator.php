@@ -15,7 +15,7 @@ $coordinator = new Coordinator($db);
 //decode posted data
 $data = json_decode(file_get_contents("php://input"));
 
-$coordinator->user_id = $data->user_id;
+
 $coordinator->email = $data->email;
 $coordinator->password = $data->password;
 $coordinator->phone_number = $data->phone_number;
