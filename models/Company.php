@@ -49,4 +49,17 @@ class Company
         $stmt->execute();
         return $stmt;
     }
+
+    public function putCompanyHash()
+    {
+        $query = 'UPDATE company SET
+        password = ? WHERE company_id = ?';
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(1, $this->password);
+        $stmt->bindParam(2, $this->company_id);
+
+        $stmt->execute();
+        return $stmt;
+    }
 }
