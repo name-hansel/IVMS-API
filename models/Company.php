@@ -62,4 +62,20 @@ class Company
         $stmt->execute();
         return $stmt;
     }
+
+    public function postUserCompany()
+    {
+        $query = "INSERT INTO company(company_id, email, password, phone_number, company, description) VALUES (?,?,?,?,?,?)";
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(1, $this->company_id);
+        $stmt->bindParam(2, $this->email);
+        $stmt->bindParam(3, $this->password);
+        $stmt->bindParam(4, $this->phone_number);
+        $stmt->bindParam(5, $this->company);
+        $stmt->bindParam(6, $this->description);
+
+        $stmt->execute();
+        return $stmt;
+    }
 }
