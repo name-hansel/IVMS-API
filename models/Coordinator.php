@@ -28,4 +28,12 @@ class Coordinator
         $stmt->execute();
         return $stmt;
     }
+
+    public function getHashCoordinator()
+    {
+        $query = 'SELECT email, password FROM coordinator';
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
 }
