@@ -52,3 +52,7 @@ Content-Type: application/json
 "phone_number": "1234", 
 "college": "ABC College"
 }
+
+### 
+
+GET http://localhost/IVMS-API/API/company/getHashCompany.php

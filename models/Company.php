@@ -24,9 +24,17 @@ class Company
         return $stmt;
     }
 
-    public function getHomeCompanyData()
+    public function getHomeCompany()
     {
         $query = 'SELECT company, description FROM company';
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
+
+    public function getHashCompany()
+    {
+        $query = 'SELECT email, password FROM company';
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;

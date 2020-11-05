@@ -12,7 +12,7 @@
     $company = new Company($db);
 
     
-    $result = $company->getHomeCompany();
+    $result = $company->getHashCompany();
     $num = $result->rowCount();
 
     if($num> 0) {
@@ -22,8 +22,8 @@
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
             $companyItem = array(
-                'company' => $company,
-                'description' => $description
+                'email' => $email,
+                'password' => $password
             );
             array_push($companyArray['data'], $companyItem);
         }
@@ -35,4 +35,3 @@
         );
 
     }
-
