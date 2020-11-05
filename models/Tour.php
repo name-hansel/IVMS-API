@@ -57,15 +57,7 @@ class Tour
         $stmt->execute();
         return $stmt;
     }
-
-    public function getAllTours()
-    {
-        $query = 'SELECT name, branch, company_id, place, description, avg_rating FROM tour';
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt;
-    }
-
+    
     public function getCompanyTours()
     {
         $query = 'SELECT tour_id, name, branch, available_days, place, number_people, rate, description, avg_rating, created_at, edited_at  FROM ' . $this->table . ' WHERE company_id = ?';
