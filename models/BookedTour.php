@@ -73,7 +73,7 @@ class BookedTour
     }
 
     public function getInfoPastTours()
-    {   
+    {
         $query = 'SELECT b.btour_id,c.college,t.name,b.date,b.rating,b.number_people,a.company
         from btour b inner join tour t on b.tour_id=t.tour_id inner join coordinator c
         on b.user_id=c.user_id inner join company a on t.company_id=a.company_id

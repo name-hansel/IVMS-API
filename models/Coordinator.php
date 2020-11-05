@@ -31,8 +31,12 @@ class Coordinator
 
     public function getHashCoordinator()
     {
-        $query = 'SELECT email, password FROM coordinator';
+        $query = 'SELECT password FROM coordinator
+        WHERE email = ?';
         $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(1, $this->email);
+
         $stmt->execute();
         return $stmt;
     }
