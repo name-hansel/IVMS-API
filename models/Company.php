@@ -16,7 +16,7 @@ class Company
         $this->conn = $db;
     }
 
-    public function getAllCompanies()
+    public function getInfoAllCompanies()
     {
         $query = 'SELECT company_id, email, phone_number, company, description FROM company';
         $stmt = $this->conn->prepare($query);
