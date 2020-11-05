@@ -68,7 +68,7 @@ class Company
         $query = "INSERT INTO company(email, password, phone_number, company, description) VALUES (?,?,?,?,?)";
         $stmt = $this->conn->prepare($query);
 
-        
+
         $stmt->bindParam(1, $this->email);
         $stmt->bindParam(2, $this->password);
         $stmt->bindParam(3, $this->phone_number);

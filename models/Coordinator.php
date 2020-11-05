@@ -17,10 +17,9 @@ class Coordinator
 
     public function postUserCoordinator()
     {
-        $query = "INSERT INTO coordinator(email, password, phone_number, college) VALUES (?,?,?,?,?)";
+        $query = "INSERT INTO coordinator(email, password, phone_number, college) VALUES (?,?,?,?)";
         $stmt = $this->conn->prepare($query);
 
-       
         $stmt->bindParam(1, $this->email);
         $stmt->bindParam(2, $this->password);
         $stmt->bindParam(3, $this->phone_number);
