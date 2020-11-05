@@ -1,37 +1,39 @@
 <?php
-    // Headers
-    header('Access-Control-Allow-Origin: *');
-    header('Content-Type: application/json');
+// Headers
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
-    include_once '../../config/Database.php';
-    include_once '../../models/Company.php';
+include_once '../../config/Database.php';
+include_once '../../models/Company.php';
 
-    //Instantiate DB and connect
-    $database= new Database();
-    $db= $database->connect();
-    $company = new Company($db);
+//Instantiate DB and connect
+$database = new Database();
+$db = $database->connect();
 
-    
-    $result = $company->getHashCompany();
-    $num = $result->rowCount();
+$company = new Company($db);
+// get email address of the user trying to login
+$data = json_decode(file_get_contents("php://input"));
+$company->email = $data->email;
 
-    if($num> 0) {
-        $companyArray = array();
-        $companyArray['data']= array();
+$companyResult = $company->getHashCompany();
+$companyNum = $companyResult->rowCount();
 
-        while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            extract($row);
-            $companyItem = array(
-                'email' => $email,
-                'password' => $password
-            );
-            array_push($companyArray['data'], $companyItem);
-        }
-        echo json_encode($companyArray);
+$companyArray = array();
+$companyArray['data'] = array();
 
-    } else {
-        echo json_encode(
-            array('message' => 'No Companies Found')
+if ($companyNum > 0) {
+    while ($row = $companyResult->fetch(PDO::FETCH_ASSOC)) {
+        extract($row);
+        $company_item = array(
+            'password' => $password
         );
-
+        array_push($companyArray['data'], $company_item);
     }
+} else {
+    $message = array('message' => 'No company found');
+    array_push($companyArray['data'], $message);
+}
+
+echo json_encode($companyArray);
