@@ -10,7 +10,7 @@ $database = new Database();
 $db = $database->connect();
 
 $bookedTour = new BookedTour($db);
-$bookedTour->company_id = 1;
+$bookedTour->company_id = $_GET['company_id'];
 
 $bookedTourResult = $bookedTour->getCompanyBookedTours();
 $bookedTourNum = $bookedTourResult->rowCount();

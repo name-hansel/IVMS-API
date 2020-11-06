@@ -15,8 +15,8 @@ $bTour = new BookedTour($db);
 //set company_id
 // $tour->company_id = isset($_GET['company_id']) ? $_GET['company_id'] : die;
 
-$tour->company_id = 1;
-$bTour->company_id = 1;
+$tour->company_id = $_GET['company_id'];
+$bTour->company_id = $_GET['company_id'];
 
 $tourResult = $tour->getSampleCompanyTourData();
 $bookedTourResult = $bTour->getSampleCompanyBookedTourData();

@@ -12,7 +12,7 @@
     $company = new Company($db);
 
     
-    $result = $company->getHomeCompanyData();
+    $result = $company->getHomeCompany();
     $num = $result->rowCount();
 
     if($num> 0) {
