@@ -72,17 +72,13 @@ class BookedTour
         return $stmt;
     }
 
-    public function scheduledCoordinatorTour()
+    public function getInfoPastTours()
     {
-        $query = "INSERT INTO btour(btour_id, tour_id, user_id, number_people, date, rating) VALUES (?,?,?,?,?,?)";
+        $query = 'SELECT b.btour_id,c.college,t.name,b.date,b.rating,b.number_people,a.company
+        from btour b inner join tour t on b.tour_id=t.tour_id inner join coordinator c
+        on b.user_id=c.user_id inner join company a on t.company_id=a.company_id
+        where b.date < current_date;';
         $stmt = $this->conn->prepare($query);
-
-        $stmt->bindParam(1, $this->btour_id);
-        $stmt->bindParam(2, $this->tour_id);
-        $stmt->bindParam(3, $this->user_id);
-        $stmt->bindParam(4, $this->number_people);
-        $stmt->bindParam(5, $this->date);
-        $stmt->bindParam(6, $this->rating);
         $stmt->execute();
         return $stmt;
     }

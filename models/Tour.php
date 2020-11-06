@@ -49,7 +49,7 @@ class Tour
         $stmt->execute();
         return $stmt;
     }
-    
+
     function getFromTour()
     {
         $query = 'SELECT * FROM tour';
@@ -57,7 +57,7 @@ class Tour
         $stmt->execute();
         return $stmt;
     }
-    
+
     public function getCompanyTours()
     {
         $query = 'SELECT tour_id, name, branch, available_days, place, number_people, rate, description, avg_rating, created_at, edited_at  FROM ' . $this->table . ' WHERE company_id = ?';
@@ -76,7 +76,8 @@ class Tour
         return $stmt;
     }
 
-    public function putEditTour() {
+    public function putEditTour()
+    {
         // name, branch, available_days, place, number_people, rate, description, edited_at
         $query = 'UPDATE tour SET
         name = ?, branch = ?, available_days = ?, place = ?, number_people = ?, rate = ?, description = ?, edited_at = NOW()
@@ -99,6 +100,16 @@ class Tour
     {
         $query = 'SELECT t.tour_id, t.name, t.branch, c.company, t.place, t.description, t.avg_rating FROM tour t inner join company c on t.company_id=c.company_id';
         $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
+
+    public function deleteTour()
+    {
+        $query = 'DELETE FROM tour WHERE tour_id = ?';
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->tour_id);
+
         $stmt->execute();
         return $stmt;
     }
