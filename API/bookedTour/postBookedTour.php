@@ -6,23 +6,23 @@ header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
 include_once '../../config/Database.php';
-include_once '../../models/scheduledCoordinatorTour.php';
+include_once '../../models/BookedTour.php';
 
 $database = new Database();
 $db = $database->connect();
 
-$scheduledCoordinatorTour = new scheduledCoordinatorTour($db);
+$bookedTour = new BookedTour($db);
 //decode posted data
 $data = json_decode(file_get_contents("php://input"));
 
-$scheduledCoordinatorTour->btour_id = $data->btour_id;
-$scheduledCoordinatorTour->tour_id = $data->tour_id;
-$scheduledCoordinatorTour->user_id = $data->user_id;
-$scheduledCoordinatorTour->number_people = $data->number_people;
-$scheduledCoordinatorTour->date = $data->date;
-$scheduledCoordinatorTour->rating = $data->rating;
+$bookedTour->btour_id = $data->btour_id;
+$bookedTour->tour_id = $data->tour_id;
+$bookedTour->user_id = $data->user_id;
+$bookedTour->number_people = $data->number_people;
+$bookedTour->date = $data->date;
+$bookedTour->rating = $data->rating;
 
-if ($scheduledCoordinatorTour->postCoordinatorBookedTour()) {
+if ($bookedTour->scheduledCoordinatorTour()) {
     echo json_encode(
         array('message' => 'Record Created')
     );

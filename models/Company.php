@@ -16,7 +16,7 @@ class Company
         $this->conn = $db;
     }
 
-    public function getInfoAllCompanies()
+    public function getAllCompanies()
     {
         $query = 'SELECT company_id, email, phone_number, company, description FROM company';
         $stmt = $this->conn->prepare($query);
@@ -24,22 +24,10 @@ class Company
         return $stmt;
     }
 
-    public function getHomeCompany()
+    public function getHomeCompanyData()
     {
         $query = 'SELECT company, description FROM company';
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt;
-    }
-
-    public function getHashCompany()
-    {
-        $query = 'SELECT password FROM company
-        WHERE email = ?';
-
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $this->email);
-
         $stmt->execute();
         return $stmt;
     }
@@ -57,35 +45,6 @@ class Company
         $stmt->bindParam(3, $this->company);
         $stmt->bindParam(4, $this->description);
         $stmt->bindParam(5, $this->company_id);
-
-        $stmt->execute();
-        return $stmt;
-    }
-
-    public function putCompanyHash()
-    {
-        $query = 'UPDATE company SET
-        password = ? WHERE company_id = ?';
-        $stmt = $this->conn->prepare($query);
-
-        $stmt->bindParam(1, $this->password);
-        $stmt->bindParam(2, $this->company_id);
-
-        $stmt->execute();
-        return $stmt;
-    }
-
-    public function postUserCompany()
-    {
-        $query = "INSERT INTO company(email, password, phone_number, company, description) VALUES (?,?,?,?,?)";
-        $stmt = $this->conn->prepare($query);
-
-
-        $stmt->bindParam(1, $this->email);
-        $stmt->bindParam(2, $this->password);
-        $stmt->bindParam(3, $this->phone_number);
-        $stmt->bindParam(4, $this->company);
-        $stmt->bindParam(5, $this->description);
 
         $stmt->execute();
         return $stmt;

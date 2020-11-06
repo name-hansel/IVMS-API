@@ -46,7 +46,6 @@ POST http://localhost/IVMS-API/API/coordinator/postUserCoordinator.php
 Content-Type: application/json
 
 {
-<<<<<<< HEAD
     "company_id": 2,
     "phone_number": 9876543210,
     "company": "Edited Company",
@@ -70,7 +69,7 @@ Content-Type: application/json
 
 ####
 
-POST http://localhost/IVMS-API/API/tour/postCoordinatorBookedTour.php
+POST http://localhost/IVMS-API/API/bookedTour/postBookedTour.php
 Content-Type: application/json
 
 {
@@ -82,12 +81,6 @@ Content-Type: application/json
     "rating": 5,
 
 }
-=======
-    "email": "abc@def.com", 
-    "password": "hashed", 
-    "phone_number": "1234", 
-    "college": "ABC College"
-}
 
 ### 
 
@@ -96,4 +89,3 @@ GET http://localhost/IVMS-API/API/company/getHashCompany.php?email=abc@def.com
 ###
 
 GET http://localhost/IVMS-API/API/coordinator/getHashCoordinator.php?email=abc@def.com
->>>>>>> 0853cadd8ea73c70e9cf4fb2451d83f7949be595
