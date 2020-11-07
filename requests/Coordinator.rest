@@ -1,0 +1,27 @@
+# no need to pass user_id to get coordinator tours
+GET http://localhost/IVMS-API/API/tour/getSampleCoordinatorTours.php?user_id=1
+
+###
+
+POST http://localhost/IVMS-API/API/bookedTour/postBookedTour.php
+Content-Type: application/json
+
+{
+    "tour_id": 23,
+    "user_id": 2,
+    "number_people":10
+}
+
+###
+
+POST http://localhost/IVMS-API/API/student/postStudentDetails.php
+Content-Type: application/json
+
+{
+    "studet_id": "45",
+    "user_id": 1,
+    "name": "qwerty",
+    "email": "asd@wer",
+    "phone_number": "1232343454",
+    "branch": "Computers"   
+}

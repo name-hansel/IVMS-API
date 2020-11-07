@@ -1,0 +1,37 @@
+GET http://localhost/IVMS-API/API/tour/getHomeTour.php
+
+###
+
+POST http://localhost/IVMS-API/API/company/postUserCompany.php
+Content-Type: application/json
+
+{
+    
+    "email": "vgty@gmail.com",
+    "password": 1578,
+    "phone_number": 8765475631,
+    "company": "hhu",
+    "description": "jhfghuguehjhfbwfj"
+}
+
+###
+
+POST http://localhost/IVMS-API/API/coordinator/postUserCoordinator.php 
+Content-Type: application/json
+
+{
+    "email": "abc@def.com", 
+    "password": "hashed", 
+    "phone_number": "1234", 
+    "college": "ABC College"
+}
+
+### 
+
+GET http://localhost/IVMS-API/API/company/getHashCompany.php?email=abc@def.com
+
+###
+
+GET http://localhost/IVMS-API/API/coordinator/getHashCoordinator.php?email=abc@def.com
+
+###

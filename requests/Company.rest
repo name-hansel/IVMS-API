@@ -1,0 +1,21 @@
+GET http://localhost/IVMS-API/API/tour/getSampleCompanyData.php?company_id=1
+
+###
+
+GET http://localhost/IVMS-API/API/tour/getCompanyTours.php?company_id=1
+
+###
+
+POST http://localhost/IVMS-API/API/tour/postNewTour.php
+Content-Type: application/json
+
+{
+    "name": "ABC Tour",
+    "branch": "IT",
+    "company_id": 1,
+    "available_days": "02-10-2020",
+    "place": "Mumbai",
+    "number_people": 10,
+    "rate": 1000,
+    "description": "via API"
+}
