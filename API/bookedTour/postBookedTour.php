@@ -15,12 +15,9 @@ $bookedTour = new BookedTour($db);
 //decode posted data
 $data = json_decode(file_get_contents("php://input"));
 
-$bookedTour->btour_id = $data->btour_id;
 $bookedTour->tour_id = $data->tour_id;
 $bookedTour->user_id = $data->user_id;
 $bookedTour->number_people = $data->number_people;
-$bookedTour->date = $data->date;
-$bookedTour->rating = $data->rating;
 
 if ($bookedTour->scheduledCoordinatorTour()) {
     echo json_encode(

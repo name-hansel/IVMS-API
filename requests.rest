@@ -69,13 +69,9 @@ POST http://localhost/IVMS-API/API/bookedTour/postBookedTour.php
 Content-Type: application/json
 
 {
-    "btour_id": "1",
-    "tour_id": "1",
+    "tour_id": 23,
     "user_id": 2,
-    "number_people":10,
-    "date": "12-1-21",
-    "rating": 5,
-
+    "number_people":10
 }
 
 ###
