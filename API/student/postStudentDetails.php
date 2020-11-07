@@ -6,12 +6,12 @@ header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
 include_once '../../config/Database.php';
-include_once '../../models/studentDetails.php';
+include_once '../../models/Student.php';
 
 $database = new Database();
 $db = $database->connect();
 
-$student = new studentDetils($db);
+$student = new studentDetails($db);
 //decode posted data
 $data = json_decode(file_get_contents("php://input"));
 

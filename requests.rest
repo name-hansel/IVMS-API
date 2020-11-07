@@ -59,3 +59,34 @@ GET http://localhost/IVMS-API/API/company/getHashCompany.php?email=abc@def.com
 ###
 
 GET http://localhost/IVMS-API/API/coordinator/getHashCoordinator.php?email=abc@def.com
+
+###
+GET http://localhost/IVMS-API/API/tour/getSampleCoordinatorTours.php?user_id=1
+###
+
+
+POST http://localhost/IVMS-API/API/bookedTour/postBookedTour.php
+Content-Type: application/json
+
+{
+    "btour_id": "1",
+    "tour_id": "1",
+    "user_id": 2,
+    "number_people":10,
+    "date": "12-1-21",
+    "rating": 5,
+
+}
+
+###
+POST http://localhost/IVMS-API/API/student/postStudentDetails.php
+Content-Type: application/json
+
+{
+    "studet_id": "45",
+    "user_id": 1,
+    "name": "qwerty",
+    "email": "asd@wer",
+    "phone_number": "1232343454",
+    "branch": "Computers"   
+}
