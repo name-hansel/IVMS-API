@@ -97,9 +97,11 @@ class BookedTour
     }
 
     public function getCoordinatorPastTours(){
-        $query = 'SELECT btour_id, btour.tour_id, btour.user_id, tour.name,tour.available_days, btour.number_people, btour.rating FROM btour INNER JOIN tour 
+        $query = 'SELECT btour_id, btour.tour_id, tour.name,tour.available_days, btour.number_people, btour.rating, company.company FROM btour INNER JOIN tour 
         ON tour.tour_id = btour.tour_id 
-        WHERE (tour.user_id = ?)';
+        INNER JOIN company
+        ON tour.company_id = company.company_id
+        WHERE (btour.user_id = ?)';
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->user_id);
