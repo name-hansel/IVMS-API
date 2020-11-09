@@ -28,6 +28,10 @@ Content-Type: application/json
 
 ###
 
+GET http://localhost/IVMS-API/API/bookedTour/getCoordinatorPastTours.php?user_id=1
+
+###
+
 POST http://localhost/IVMS-API/API/bookedTour/postTourRating.php
 Content-Type: application/json
 
