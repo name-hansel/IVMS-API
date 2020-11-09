@@ -110,9 +110,13 @@ class BookedTour
 
     public function postTourRating(){
 
-        $query = "INSERT INTO btour(rating) VALUES (?)";
+        $query = 'UPDATE btour SET
+        rating = ? WHERE btour_id = ?';
         $stmt = $this->conn->prepare($query);
+
         $stmt->bindParam(1, $this->rating);
+        $stmt->bindParam(2, $this->btour_id);
+
         $stmt->execute();
         return $stmt;
     }
