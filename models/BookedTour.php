@@ -95,4 +95,25 @@ class BookedTour
         $stmt->execute();
         return $stmt;
     }
+
+    public function getCoordinatorPastTours(){
+        $query = 'SELECT btour_id, btour.tour_id, btour.user_id, tour.name,tour.available_days, btour.number_people, btour.rating FROM btour INNER JOIN tour 
+        ON tour.tour_id = btour.tour_id 
+        WHERE (tour.user_id = ?)';
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->user_id);
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    public function postTourRating(){
+
+        $query = "INSERT INTO btour(rating) VALUES (?)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->rating);
+        $stmt->execute();
+        return $stmt;
+    }
 }

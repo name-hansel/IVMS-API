@@ -25,3 +25,13 @@ Content-Type: application/json
     "phone_number": "1232343454",
     "branch": "Computers"   
 }
+
+###
+
+POST http://localhost/IVMS-API/API/bookedTour/postTourRating.php
+Content-Type: application/json
+
+{
+    "rating": "3",
+    
+}
