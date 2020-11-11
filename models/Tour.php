@@ -113,4 +113,14 @@ class Tour
         $stmt->execute();
         return $stmt;
     }
+
+    public function getTourDetails()
+    {
+        $query = 'SELECT name, branch, place, number_people, available_days, rate, description FROM tour WHERE tour_id = ?';
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->tour_id);
+
+        $stmt->execute();
+        return $stmt;
+    }
 }
