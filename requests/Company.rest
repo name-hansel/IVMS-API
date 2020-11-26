@@ -19,3 +19,18 @@ Content-Type: application/json
     "rate": 1000,
     "description": "via API"
 }
+
+###
+POST https://localhost/IVMS-API/API/tour/putEditTour.php
+Content-Type: application/json
+
+{
+    "tour_id": 33,
+    "name": "UPDATED",
+    "branch": "Computers",
+    "available_days": "18-11-2020",
+    "place": "Mumbai",
+    "number_people": 10,
+    "rate": 1000,
+    "description": "updated via API"
+}
