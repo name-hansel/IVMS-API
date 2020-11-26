@@ -26,6 +26,8 @@ class Tour
     {
         $query = 'SELECT tour_id, name, branch, place, rate FROM ' . $this->table . ' WHERE company_id = ? LIMIT 3';
         $stmt = $this->conn->prepare($query);
+
+        $this->company_id = htmlspecialchars(strip_tags($this->company_id));
         $stmt->bindParam(1, $this->company_id);
         $stmt->execute();
 
@@ -36,6 +38,15 @@ class Tour
     {
         $query = "INSERT INTO tour(name, branch, company_id, available_days, place, number_people, rate, description) VALUES (?,?,?,?,?,?,?,?)";
         $stmt = $this->conn->prepare($query);
+
+        $this->name = htmlspecialchars(strip_tags($this->name));
+        $this->branch = htmlspecialchars(strip_tags($this->branch));
+        $this->company_id = htmlspecialchars(strip_tags($this->company_id));
+        $this->available_days = htmlspecialchars(strip_tags($this->available_days));
+        $this->place = htmlspecialchars(strip_tags($this->place));
+        $this->number_people = htmlspecialchars(strip_tags($this->number_people));
+        $this->rate = htmlspecialchars(strip_tags($this->rate));
+        $this->description = htmlspecialchars(strip_tags($this->description));
 
         $stmt->bindParam(1, $this->name);
         $stmt->bindParam(2, $this->branch);
@@ -62,6 +73,8 @@ class Tour
     {
         $query = 'SELECT tour_id, name, branch, available_days, place, number_people, rate, description, avg_rating, created_at, edited_at  FROM ' . $this->table . ' WHERE company_id = ?';
         $stmt = $this->conn->prepare($query);
+
+        $this->company_id = htmlspecialchars(strip_tags($this->company_id));
         $stmt->bindParam(1, $this->company_id);
         $stmt->execute();
 
@@ -83,6 +96,16 @@ class Tour
         name = ?, branch = ?, available_days = ?, place = ?, number_people = ?, rate = ?, description = ?, edited_at = NOW()
         WHERE tour_id = ?';
         $stmt = $this->conn->prepare($query);
+
+        $this->name = htmlspecialchars(strip_tags($this->name));
+        $this->branch = htmlspecialchars(strip_tags($this->branch));
+        $this->available_days = htmlspecialchars(strip_tags($this->available_days));
+        $this->place = htmlspecialchars(strip_tags($this->place));
+        $this->number_people = htmlspecialchars(strip_tags($this->number_people));
+        $this->rate = htmlspecialchars(strip_tags($this->rate));
+        $this->description = htmlspecialchars(strip_tags($this->description));
+        $this->tour_id = htmlspecialchars(strip_tags($this->tour_id));
+
         $stmt->bindParam(1, $this->name);
         $stmt->bindParam(2, $this->branch);
         $stmt->bindParam(3, $this->available_days);
@@ -108,8 +131,9 @@ class Tour
     {
         $query = 'DELETE FROM tour WHERE tour_id = ?';
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(1, $this->tour_id);
+        $this->tour_id = htmlspecialchars(strip_tags($this->tour_id));
 
+        $stmt->bindParam(1, $this->tour_id);
         $stmt->execute();
         return $stmt;
     }
@@ -118,6 +142,8 @@ class Tour
     {
         $query = 'SELECT name, branch, place, number_people, available_days, rate, description FROM tour WHERE tour_id = ?';
         $stmt = $this->conn->prepare($query);
+
+        $this->tour_id = htmlspecialchars(strip_tags($this->tour_id));
         $stmt->bindParam(1, $this->tour_id);
 
         $stmt->execute();

@@ -27,18 +27,10 @@ class BookedTour
         WHERE (tour.company_id = ? AND tour.available_days > CURRENT_DATE) LIMIT 3';
 
         $stmt = $this->conn->prepare($query);
+        $this->company_id = htmlspecialchars(strip_tags($this->company_id));
         $stmt->bindParam(1, $this->company_id);
         $stmt->execute();
 
-        return $stmt;
-    }
-
-    public function getPastCoordinatorTours()
-    {
-        // TODO fix query to match updated columns, get tour name, company name, and date (from tour table)
-        $query = 'SELECT btour_id, tour_id, user_id, date FROM btour WHERE btour_id < 10006';
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
         return $stmt;
     }
 
@@ -51,6 +43,7 @@ class BookedTour
         WHERE (tour.company_id = ? AND tour.available_days > CURRENT_DATE)';
 
         $stmt = $this->conn->prepare($query);
+        $this->company_id = htmlspecialchars(strip_tags($this->company_id));
         $stmt->bindParam(1, $this->company_id);
         $stmt->execute();
 
@@ -66,6 +59,7 @@ class BookedTour
         WHERE (tour.company_id = ? AND tour.available_days < CURRENT_DATE)';
 
         $stmt = $this->conn->prepare($query);
+        $this->company_id = htmlspecialchars(strip_tags($this->company_id));
         $stmt->bindParam(1, $this->company_id);
         $stmt->execute();
 
@@ -88,6 +82,10 @@ class BookedTour
         $query = "INSERT INTO btour(tour_id, user_id, number_people) VALUES (?,?,?)";
         $stmt = $this->conn->prepare($query);
 
+        $this->company_id = htmlspecialchars(strip_tags($this->company_id));
+        $this->user_id = htmlspecialchars(strip_tags($this->user_id));
+        $this->number_people = htmlspecialchars(strip_tags($this->number_people));
+
         $stmt->bindParam(1, $this->tour_id);
         $stmt->bindParam(2, $this->user_id);
         $stmt->bindParam(3, $this->number_people);
@@ -96,7 +94,8 @@ class BookedTour
         return $stmt;
     }
 
-    public function getCoordinatorPastTours(){
+    public function getCoordinatorPastTours()
+    {
         $query = 'SELECT btour_id, btour.tour_id, tour.name,tour.available_days, btour.number_people, btour.rating, company.company FROM btour INNER JOIN tour 
         ON tour.tour_id = btour.tour_id 
         INNER JOIN company
@@ -104,17 +103,22 @@ class BookedTour
         WHERE (btour.user_id = ?)';
 
         $stmt = $this->conn->prepare($query);
+        $this->user_id = htmlspecialchars(strip_tags($this->user_id));
         $stmt->bindParam(1, $this->user_id);
         $stmt->execute();
 
         return $stmt;
     }
 
-    public function postTourRating(){
+    public function postTourRating()
+    {
 
         $query = 'UPDATE btour SET
         rating = ? WHERE btour_id = ?';
         $stmt = $this->conn->prepare($query);
+
+        $this->rating = htmlspecialchars(strip_tags($this->rating));
+        $this->btour_id = htmlspecialchars(strip_tags($this->btour_id));
 
         $stmt->bindParam(1, $this->rating);
         $stmt->bindParam(2, $this->btour_id);

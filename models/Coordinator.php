@@ -20,6 +20,11 @@ class Coordinator
         $query = "INSERT INTO coordinator(email, password, phone_number, college) VALUES (?,?,?,?)";
         $stmt = $this->conn->prepare($query);
 
+        $this->email = htmlspecialchars(strip_tags($this->email));
+        $this->password = htmlspecialchars(strip_tags($this->password));
+        $this->phone_number = htmlspecialchars(strip_tags($this->phone_number));
+        $this->college = htmlspecialchars(strip_tags($this->college));
+
         $stmt->bindParam(1, $this->email);
         $stmt->bindParam(2, $this->password);
         $stmt->bindParam(3, $this->phone_number);
@@ -35,6 +40,7 @@ class Coordinator
         WHERE email = ?';
 
         $stmt = $this->conn->prepare($query);
+        $this->email = htmlspecialchars(strip_tags($this->email));
         $stmt->bindParam(1, $this->email);
 
         $stmt->execute();
@@ -47,6 +53,10 @@ class Coordinator
         email = ?, phone_number = ?, college = ?
         WHERE user_id = ?';
         $stmt = $this->conn->prepare($query);
+
+        $this->email = htmlspecialchars(strip_tags($this->email));
+        $this->phone_number = htmlspecialchars(strip_tags($this->phone_number));
+        $this->college = htmlspecialchars(strip_tags($this->college));
 
         $stmt->bindParam(1, $this->email);
         $stmt->bindParam(2, $this->phone_number);
@@ -61,11 +71,13 @@ class Coordinator
         password = ? WHERE user_id = ?';
         $stmt = $this->conn->prepare($query);
 
+        $this->password = htmlspecialchars(strip_tags($this->password));
+        $this->user_id = htmlspecialchars(strip_tags($this->user_id));
+
         $stmt->bindParam(1, $this->password);
         $stmt->bindParam(2, $this->user_id);
 
         $stmt->execute();
         return $stmt;
     }
-
 }
