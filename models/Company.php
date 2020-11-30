@@ -105,4 +105,15 @@ class Company
         $stmt->execute();
         return $stmt;
     }
+
+    public function getCompanyInfo()
+    {
+        $query = 'SELECT company, phone_number, description FROM company WHERE company_id=?';
+        $stmt = $this->conn->prepare($query);
+        $this->company_id = htmlspecialchars(strip_tags($this->company_id));
+        $stmt->bindParam(1, $this->company_id);
+
+        $stmt->execute();
+        return $stmt;
+    }
 }
