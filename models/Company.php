@@ -50,21 +50,19 @@ class Company
     {
         // email, phone number, company name, description
         $query = 'UPDATE company SET
-        email = ?, phone_number = ?, company = ?, description = ?
+        phone_number = ?, company = ?, description = ?
         WHERE company_id = ?';
         $stmt = $this->conn->prepare($query);
 
-        $this->email = htmlspecialchars(strip_tags($this->email));
         $this->phone_number = htmlspecialchars(strip_tags($this->phone_number));
         $this->company = htmlspecialchars(strip_tags($this->company));
         $this->description = htmlspecialchars(strip_tags($this->description));
         $this->company_id = htmlspecialchars(strip_tags($this->company_id));
 
-        $stmt->bindParam(1, $this->email);
-        $stmt->bindParam(2, $this->phone_number);
-        $stmt->bindParam(3, $this->company);
-        $stmt->bindParam(4, $this->description);
-        $stmt->bindParam(5, $this->company_id);
+        $stmt->bindParam(1, $this->phone_number);
+        $stmt->bindParam(2, $this->company);
+        $stmt->bindParam(3, $this->description);
+        $stmt->bindParam(4, $this->company_id);
 
         $stmt->execute();
         return $stmt;
