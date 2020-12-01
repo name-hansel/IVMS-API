@@ -14,7 +14,6 @@ $company = new Company($db);
 //decode posted data
 $data = json_decode(file_get_contents("php://input"));
 
-$company->email = $data->email;
 $company->phone_number = $data->phone_number;
 $company->company = $data->company;
 $company->description = $data->description;
