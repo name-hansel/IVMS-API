@@ -34,10 +34,6 @@ class BookedTour
         return $stmt;
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e42aa5bd32a364c0354daece6c763a0a2120bf3c
     public function getCompanyBookedTours()
     {
         $query = 'SELECT btour_id, btour.tour_id, btour.user_id, tour.name, coordinator.college, tour.available_days, btour.booked_at, btour.number_people FROM btour INNER JOIN tour 
@@ -83,17 +79,8 @@ class BookedTour
 
     public function scheduledCoordinatorTour()
     {
-        $query = "INSERT INTO btour(tour_id, user_id, number_people) VALUES (?,?,?)";
+        $query = "SELECT tour_id, date, number_people FROM btour where (user_id=?)";
         $stmt = $this->conn->prepare($query);
-
-        $this->company_id = htmlspecialchars(strip_tags($this->company_id));
-        $this->user_id = htmlspecialchars(strip_tags($this->user_id));
-        $this->number_people = htmlspecialchars(strip_tags($this->number_people));
-
-        $stmt->bindParam(1, $this->tour_id);
-        $stmt->bindParam(2, $this->user_id);
-        $stmt->bindParam(3, $this->number_people);
-
         $stmt->execute();
         return $stmt;
     }
