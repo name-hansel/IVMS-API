@@ -81,6 +81,7 @@ class BookedTour
     {
         $query = "SELECT tour_id, date, number_people FROM btour where (user_id=?)";
         $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->user_id);
         $stmt->execute();
         return $stmt;
     }
