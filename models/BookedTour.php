@@ -33,14 +33,6 @@ class BookedTour
         return $stmt;
     }
 
-    public function getPastCoordinatorTours()
-    {
-        // TODO fix query to match updated columns, get tour name, company name, and date (from tour table)
-        $query = 'SELECT btour_id, tour_id, user_id, date FROM btour WHERE btour_id < 10006';
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt;
-    }
 
     public function getCompanyBookedTours()
     {
