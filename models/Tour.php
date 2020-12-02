@@ -121,7 +121,7 @@ class Tour
 
     public function getInfoAllTours()
     {
-        $query = 'SELECT t.tour_id, t.name, t.branch, c.company, t.place, t.description, t.avg_rating FROM tour t inner join company c on t.company_id=c.company_id';
+        $query = 'SELECT t.tour_id, t.name, t.branch, c.company, t.place, t.description, t.avg_rating FROM tour t inner join company c on t.company_id=c.company_id LIMIT 20';
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
