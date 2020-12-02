@@ -27,7 +27,7 @@ class Company
 
     public function getHomeCompany()
     {
-        $query = 'SELECT company, description FROM company';
+        $query = 'SELECT company, description FROM company LIMIT 4';
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
@@ -35,7 +35,7 @@ class Company
 
     public function getHashCompany()
     {
-        $query = 'SELECT password FROM company
+        $query = 'SELECT company_id, password FROM company
         WHERE email = ?';
 
         $stmt = $this->conn->prepare($query);

@@ -11,7 +11,6 @@ $database = new Database();
 $db = $database->connect();
 
 $company = new Company($db);
-// get email address of the user trying to login
 $company->company_id = $_GET['company_id'];
 
 $companyResult = $company->getCompanyInfo();

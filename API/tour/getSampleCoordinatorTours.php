@@ -5,8 +5,6 @@ header('Content-Type: application/json');
 include_once '../../config/Database.php';
 include_once '../../models/Tour.php';
 
-// TODO change variable casing, change array name from post_arr to tourArray and post_item to tourItem
-
 $database = new Database();
 $db = $database->connect();
 
@@ -17,7 +15,6 @@ $num = $result->rowcount();
 
 $tourArray = array();
 $tourArray['data'] = array();
-
 if ($num > 0) {
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
