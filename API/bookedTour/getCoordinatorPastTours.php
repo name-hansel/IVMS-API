@@ -21,10 +21,10 @@ if ($pastTourNum > 0) {
     while ($row = $pastTourResult->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
         $pastTour_item = array(
-            'btour_id' => $btour_id,
-            'tour_id' => $tour_id,
-            'user_id' => $user_id,
+            'name' => $name,
+            'company' => $company,
             'date' => $available_days,
+            'booked_at' => $booked_at,
             'number_people' => $number_people,
             'rating' => $rating
         );

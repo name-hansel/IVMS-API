@@ -18,6 +18,7 @@ $data = json_decode(file_get_contents("php://input"));
 $bookedTour->tour_id = $data->tour_id;
 $bookedTour->user_id = $data->user_id;
 $bookedTour->number_people = $data->number_people;
+$bookedTour->date = $data->date;
 
 if ($bookedTour->postTourBooking()) {
     echo json_encode(

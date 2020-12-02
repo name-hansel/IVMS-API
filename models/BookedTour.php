@@ -10,6 +10,7 @@ class BookedTour
     public $number_people;
     public $rating;
     public $booked_at;
+    public $date;
 
     public function __construct($db)
     {
@@ -79,12 +80,11 @@ class BookedTour
 
     public function scheduledCoordinatorTour()
     {
-        $query = 'SELECT btour_id, btour.tour_id, tour.name,tour.available_days, btour.number_people, btour.rating, company.company FROM btour INNER JOIN tour 
+        $query = 'SELECT btour_id, btour.tour_id, tour.name,tour.available_days, btour.number_people, btour.rating, company.company, btour.booked_at FROM btour INNER JOIN tour 
         ON tour.tour_id = btour.tour_id 
         INNER JOIN company
         ON tour.company_id = company.company_id
         WHERE (btour.user_id = ?)';
-        //$query = "SELECT tour_id, date, number_people FROM btour where (user_id=?)";
         $stmt = $this->conn->prepare($query);
         $this->user_id = htmlspecialchars(strip_tags($this->user_id));
         $stmt->bindParam(1, $this->user_id);
@@ -94,11 +94,11 @@ class BookedTour
 
     public function getCoordinatorPastTours()
     {
-        $query = 'SELECT btour_id, btour.tour_id, tour.name,tour.available_days, btour.number_people, btour.rating, company.company FROM btour INNER JOIN tour 
+        $query = 'SELECT btour_id, btour.tour_id, tour.name,tour.available_days, btour.number_people, btour.rating, company.company, btour.booked_at FROM btour INNER JOIN tour 
         ON tour.tour_id = btour.tour_id 
         INNER JOIN company
         ON tour.company_id = company.company_id
-        WHERE (btour.user_id = ?)';
+        WHERE (btour.user_id = ? AND tour.available_days < CURRENT_DATE)';
 
         $stmt = $this->conn->prepare($query);
         $this->user_id = htmlspecialchars(strip_tags($this->user_id));
@@ -128,22 +128,19 @@ class BookedTour
     {
 
         $query = "INSERT INTO btour (tour_id, user_id, number_people) VALUES (?,?,?)";
-         
+
         $stmt = $this->conn->prepare($query);
 
         $this->tour_id = htmlspecialchars(strip_tags($this->tour_id));
         $this->user_id = htmlspecialchars(strip_tags($this->user_id));
         $this->number_people = htmlspecialchars(strip_tags($this->number_people));
-    
+
         $stmt->bindParam(1, $this->tour_id);
         $stmt->bindParam(2, $this->user_id);
         $stmt->bindParam(3, $this->number_people);
-        
+
 
         $stmt->execute();
         return $stmt;
     }
-
 }
-
-

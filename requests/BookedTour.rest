@@ -1,0 +1,9 @@
+POST https://localhost/IVMS-API/API/bookedTour/postBookedTour.php
+Content-Type: application/json
+
+{
+    "tour_id": 23,
+    "user_id": 1,
+    "number_people": 10,
+    "date": "02-10-2020"
+}
