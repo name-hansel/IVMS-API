@@ -17,8 +17,7 @@ $num = $result->rowcount();
 
 $tourArray = array();
 $tourArray['data'] = array();
-$tourArray['data']['tourData'] = array();
-$tourArray['data']['bookedTourData'] = array();
+
 if ($num > 0) {
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);

@@ -26,6 +26,7 @@ if ($bookedTourNum > 0) {
             //'user_id' => $user_id,
             'number_people' => $number_people,
             'available_days' => $available_days
+            
         );
         array_push($bookedTourArray['data'], $bookedTour_item);
     }

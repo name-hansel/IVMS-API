@@ -124,4 +124,26 @@ class BookedTour
         $stmt->execute();
         return $stmt;
     }
+    public function postTourBooking()
+    {
+
+        $query = "INSERT INTO btour (tour_id, user_id, number_people) VALUES (?,?,?)";
+         
+        $stmt = $this->conn->prepare($query);
+
+        $this->tour_id = htmlspecialchars(strip_tags($this->tour_id));
+        $this->user_id = htmlspecialchars(strip_tags($this->user_id));
+        $this->number_people = htmlspecialchars(strip_tags($this->number_people));
+    
+        $stmt->bindParam(1, $this->tour_id);
+        $stmt->bindParam(2, $this->user_id);
+        $stmt->bindParam(3, $this->number_people);
+        
+
+        $stmt->execute();
+        return $stmt;
+    }
+
 }
+
+

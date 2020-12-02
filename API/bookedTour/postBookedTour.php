@@ -19,7 +19,7 @@ $bookedTour->tour_id = $data->tour_id;
 $bookedTour->user_id = $data->user_id;
 $bookedTour->number_people = $data->number_people;
 
-if ($bookedTour->scheduledCoordinatorTour()) {
+if ($bookedTour->postTourBooking()) {
     echo json_encode(
         array('message' => 'Record Created')
     );
