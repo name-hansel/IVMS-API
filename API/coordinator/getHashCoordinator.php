@@ -23,6 +23,7 @@ if ($coordinatorNum > 0) {
     while ($row = $coordinatorResult->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
         $coordinator_item = array(
+            'user_id' => $user_id,
             'password' => $password
         );
         array_push($coordinatorArray['data'], $coordinator_item);

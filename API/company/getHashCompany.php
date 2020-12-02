@@ -24,6 +24,7 @@ if ($companyNum > 0) {
     while ($row = $companyResult->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
         $company_item = array(
+            'company_id' => $company_id,
             'password' => $password
         );
         array_push($companyArray['data'], $company_item);
