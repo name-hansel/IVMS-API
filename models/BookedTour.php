@@ -11,6 +11,9 @@ class BookedTour
     public $rating;
     public $booked_at;
     public $date;
+    public $college;
+    public $name;
+    public $company;
 
     public function __construct($db)
     {
