@@ -83,7 +83,7 @@ class Tour
 
     public function getHomeTour()
     {
-        $query = 'SELECT name,description FROM tour LIMIT 4';
+        $query = 'SELECT name, branch, available_days FROM tour LIMIT 4';
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;

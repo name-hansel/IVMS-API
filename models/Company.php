@@ -27,7 +27,7 @@ class Company
 
     public function getHomeCompany()
     {
-        $query = 'SELECT company, description FROM company LIMIT 4';
+        $query = 'SELECT company FROM company LIMIT 4';
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
