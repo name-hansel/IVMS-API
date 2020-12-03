@@ -80,4 +80,15 @@ class Coordinator
         $stmt->execute();
         return $stmt;
     }
+
+    public function getCoordinatorEmailExist()
+    {
+        $query = 'SELECT email FROM coordinator WHERE email = ?';
+        $stmt = $this->conn->prepare($query);
+        $this->email = htmlspecialchars(strip_tags($this->email));
+
+        $stmt->bindParam(1, $this->email);
+        $stmt->execute();
+        return $stmt;
+    }
 }

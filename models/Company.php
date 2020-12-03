@@ -27,7 +27,7 @@ class Company
 
     public function getHomeCompany()
     {
-        $query = 'SELECT company, description FROM company LIMIT 4';
+        $query = 'SELECT company FROM company LIMIT 4';
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
@@ -124,6 +124,17 @@ class Company
         $this->company_id = htmlspecialchars(strip_tags($this->company_id));
         $stmt->bindParam(1, $this->company_id);
 
+        $stmt->execute();
+        return $stmt;
+    }
+
+    public function getCompanyEmailExist()
+    {
+        $query = 'SELECT email FROM company WHERE email = ?';
+        $stmt = $this->conn->prepare($query);
+        $this->email = htmlspecialchars(strip_tags($this->email));
+
+        $stmt->bindParam(1, $this->email);
         $stmt->execute();
         return $stmt;
     }

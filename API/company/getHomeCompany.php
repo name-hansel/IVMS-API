@@ -22,8 +22,7 @@ if ($num > 0) {
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
         $companyItem = array(
-            'company' => $company,
-            'description' => $description
+            'company' => $company
         );
         array_push($companyArray['data'], $companyItem);
     }
