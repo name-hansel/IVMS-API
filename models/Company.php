@@ -127,4 +127,15 @@ class Company
         $stmt->execute();
         return $stmt;
     }
+
+    public function getCompanyEmailExist()
+    {
+        $query = 'SELECT email FROM company WHERE email = ?';
+        $stmt = $this->conn->prepare($query);
+        $this->email = htmlspecialchars(strip_tags($this->email));
+
+        $stmt->bindParam(1, $this->email);
+        $stmt->execute();
+        return $stmt;
+    }
 }
