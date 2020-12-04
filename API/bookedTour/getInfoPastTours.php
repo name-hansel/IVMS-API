@@ -15,7 +15,6 @@ $result = $btour->getInfoPastTours();
 $num = $result->rowCount();
 
 $btour_arr = array();
-$btour_arr['btourData'] = array();
 if ($num > 0) {
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
@@ -28,12 +27,11 @@ if ($num > 0) {
             'rating' => $rating,
             'date' => $date
         );
-        array_push($btour_arr['btourData'], $btour_item);
+        array_push($btour_arr, $btour_item);
     }
 } else {
-    //no tour 
     $message = array('message' => 'No tours found');
-    array_push($btour_arr['btourData'], $message);
+    array_push($btour_arr, $message);
 }
 
-echo json_encode($btour_arr['btourData']);
+echo json_encode($btour_arr);
