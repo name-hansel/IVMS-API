@@ -9,7 +9,7 @@ $database = new Database();
 $db = $database->connect();
 
 $tour = new Tour($db);
-$result = $tour->getFromTour();
+$result = $tour->getAvailableTours();
 $num = $result->rowcount();
 
 $tourArray = array();

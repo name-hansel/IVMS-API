@@ -15,6 +15,7 @@ $bookedtour = new BookedTour($db);
 //decode posted data
 $data = json_decode(file_get_contents("php://input"));
 
+$bookedtour->btour_id = $data->btour_id;
 $bookedtour->rating = $data->rating;
 if ($bookedtour->postTourRating()) {
     echo json_encode(
