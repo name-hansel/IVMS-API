@@ -91,7 +91,7 @@ class Tour
 
     public function getHomeTour()
     {
-        $query = 'SELECT tour_id, name, branch, available_days FROM tour NOT IN (SELECT tour_id FROM btour) LIMIT 4';
+        $query = 'SELECT tour_id, name, branch, available_days FROM tour WHERE tour_id NOT IN (SELECT tour_id FROM btour) LIMIT 4';
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
