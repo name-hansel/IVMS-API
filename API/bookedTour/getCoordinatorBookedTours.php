@@ -21,7 +21,6 @@ if ($bookedTourNum > 0) {
     while ($row = $bookedTourResult->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
         $bookedTour_item = array(
-            'btour_id' => $btour_id,
             'name' => $name,
             'company' => $company,
             'tour_id' => $tour_id,

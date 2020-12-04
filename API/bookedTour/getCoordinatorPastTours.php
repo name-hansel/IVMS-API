@@ -21,6 +21,7 @@ if ($pastTourNum > 0) {
     while ($row = $pastTourResult->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
         $pastTour_item = array(
+            'btour_id' => $btour_id,
             'name' => $name,
             'company' => $company,
             'date' => $available_days,
