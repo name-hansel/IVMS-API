@@ -5,6 +5,11 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,content-type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    header("HTTP/1.1 200 OK");
+    die();
+}
+
 include_once '../../config/Database.php';
 include_once '../../models/Tour.php';
 
