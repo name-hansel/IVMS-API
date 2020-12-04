@@ -61,9 +61,17 @@ class Tour
         return $stmt;
     }
 
-    function getFromTour()
+    public function getFromTour()
     {
-        $query = 'SELECT * FROM tour';
+        $query = 'SELECT tour_id, name, branch, place, available_days, rate FROM tour WHERE tour_id NOT IN (SELECT tour_id FROM btour) LIMIT 4';
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
+
+    public function getAvailableTours()
+    {
+        $query = 'SELECT tour_id, name, branch, place, available_days, rate FROM tour WHERE tour_id NOT IN (SELECT tour_id FROM btour)';
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
