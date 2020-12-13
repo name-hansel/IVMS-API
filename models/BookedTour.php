@@ -28,7 +28,7 @@ class BookedTour
         ON tour.tour_id = btour.tour_id 
         INNER JOIN coordinator
         ON coordinator.user_id = btour.user_id
-        WHERE (tour.company_id = ? AND tour.available_days > CURRENT_DATE) LIMIT 3';
+        WHERE (tour.company_id = ? AND tour.available_days >= CURRENT_DATE) LIMIT 3';
 
         $stmt = $this->conn->prepare($query);
         $this->company_id = htmlspecialchars(strip_tags($this->company_id));
@@ -44,7 +44,7 @@ class BookedTour
         ON tour.tour_id = btour.tour_id 
         INNER JOIN coordinator
         ON coordinator.user_id = btour.user_id
-        WHERE (tour.company_id = ? AND tour.available_days > CURRENT_DATE)';
+        WHERE (tour.company_id = ? AND tour.available_days >= CURRENT_DATE)';
 
         $stmt = $this->conn->prepare($query);
         $this->company_id = htmlspecialchars(strip_tags($this->company_id));
