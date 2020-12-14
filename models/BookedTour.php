@@ -87,7 +87,7 @@ class BookedTour
         ON tour.tour_id = btour.tour_id 
         INNER JOIN company
         ON tour.company_id = company.company_id
-        WHERE (btour.user_id = ?)';
+        WHERE ((btour.user_id = ?) AND tour.available_days >= CURRENT_DATE)';
         $stmt = $this->conn->prepare($query);
         $this->user_id = htmlspecialchars(strip_tags($this->user_id));
         $stmt->bindParam(1, $this->user_id);
