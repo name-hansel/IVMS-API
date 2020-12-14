@@ -25,7 +25,7 @@ if ($num > 0) {
             'company' => $company,
             'number_people' => $number_people,
             'rating' => $rating,
-            'date' => $date
+            'date' => $available_days
         );
         array_push($btour_arr, $btour_item);
     }
